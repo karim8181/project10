@@ -17,6 +17,26 @@
             font-size: 25px;
             flex-direction: row;
         }
+        .todo{
+            height: 50px;
+            width: 500px;
+            border: solid black;
+            background: darkgrey
+        }
+        .imag{
+            height: 50px;
+            width: 50px;
+            cursor: pointer;
+
+        }
+        .row{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            margin: 5px;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body style="margin: 0">
@@ -26,12 +46,33 @@
 <div>
 
 </div>
-<input type="text" name="browser" size="100%" style="height: 100px" placeholder="Add todo">
-<input type="button" value="Submit" style="height: 100px; background: purple">
+<input id="but" type="text" name="browser" size="150px" style="height: 100px" placeholder="Add todo...">
+<input onclick="buttom()" type="button" value="Submit" style="height: 100px; background: purple; cursor: pointer">
+
+<div id="id">
+
+</div>
 </body>
 <script>
-function buttom() {
+    let list = []
+    function rendr() {
+        document.getElementById('id').innerHTML=''
+        for(let i =0;i<list.length;i++){
+            let elem = document.createElement('div')
+            elem.className = 'row'
+            elem.innerHTML = '<div class="todo">' +
+                list[i] +
+                '</div>' +
+                '<input type="image" src="mus.png" class="imag">'
+            document.getElementById('id').appendChild(elem)
 
+        }
+    }
+function buttom() {
+    list.push(document.getElementById('but').value)
+    document.getElementById('but').value = ""
+    rendr()
 }
+
 </script>
 </html>
