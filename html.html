@@ -63,7 +63,7 @@
             elem.innerHTML = '<div class="todo">' +
                 list[i] +
                 '</div>' +
-                '<input type="image" src="mus.png" class="imag">'
+                '<input id="led" onclick="del('+i+')" type="image" src="mus.png" class="imag">'
             document.getElementById('id').appendChild(elem)
 
         }
@@ -73,6 +73,10 @@ function buttom() {
     document.getElementById('but').value = ""
     rendr()
 }
-
+function del(idx) {
+        console.log(idx)
+list.splice(idx,1)
+    rendr()
+}
 </script>
 </html>
