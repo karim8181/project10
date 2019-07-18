@@ -37,6 +37,11 @@
             margin: 5px;
             border-radius: 5px;
         }
+        .morkov{
+            width: 150px;
+            height: 100px;
+
+        }
     </style>
 </head>
 <body style="margin: 0">
@@ -47,8 +52,11 @@
 
 </div>
 <input id="but" type="text" name="browser" size="150px" style="height: 100px" placeholder="Add todo...">
-<input onclick="buttom()" type="button" value="Submit" style="height: 100px; background: purple; cursor: pointer">
+<input onclick="buttom()" onkeypress="" type="button" value="Submit" style="height: 100px; background: purple; cursor: pointer">
+<input onclick="cr()" type="image" src="poisk.png" style="height: 50px; width: 50px">
+<div id="id1">
 
+</div>
 <div id="id">
 
 </div>
@@ -77,6 +85,20 @@ function del(idx) {
         console.log(idx)
 list.splice(idx,1)
     rendr()
+}
+function cr() {
+        document.getElementById('id').innerHTML=''
+for(let i = 0; i<list.length;i++){
+    if (list[i].includes(document.getElementById('but').value)) {
+        let elem = document.createElement('div')
+        elem.className = 'row'
+        elem.innerHTML = '<div class="todo">' +
+            list[i] +
+            '</div>' +
+            '<input id="led" onclick="del(' + i + ')" type="image" src="mus.png" class="imag">'
+        document.getElementById('id').appendChild(elem)
+    }
+    }
 }
 </script>
 </html>
